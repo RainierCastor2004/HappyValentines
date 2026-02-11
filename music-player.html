@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Music Player</title>
+  <style>body{margin:0;background:#000;color:#fff;font-family:sans-serif} .hide{display:none}</style>
+</head>
+<body>
+  <audio id="bg-audio" src="music.mp3" loop autoplay preload="auto"></audio>
+  <script>
+    const audio = document.getElementById('bg-audio');
+    // Try to play on load; may be blocked until user interacts with opener.
+    audio.play().catch(()=>{});
+
+    // Listen for commands from opener
+    window.addEventListener('message', (ev) => {
+      if (!ev.data || typeof ev.data !== 'object') return;
+      const cmd = ev.data.cmd;
+      if (cmd === 'play') audio.play().catch(()=>{});
+      if (cmd === 'pause') audio.pause();
+      if (cmd === 'setTime' && typeof ev.data.time === 'number') audio.currentTime = ev.data.time;
+      if (cmd === 'getState') {
+        ev.source.postMessage({ cmd: 'state', playing: !audio.paused, time: audio.currentTime }, '*');
+      }
+    });
+
+    // keep window small and unfocused
+    try { window.blur(); } catch(e){}
+  </script>
+</body>
+</html>
