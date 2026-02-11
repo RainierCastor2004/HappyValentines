@@ -31,6 +31,9 @@ body {
   background-image: radial-gradient(ellipse at top, transparent 0%, var(--dark-color)), radial-gradient(ellipse at bottom, var(--dark-color), rgba(145, 233, 255, 0.2)), repeating-linear-gradient(220deg, black 0px, black 19px, transparent 19px, transparent 22px), repeating-linear-gradient(189deg, black 0px, black 19px, transparent 19px, transparent 22px), repeating-linear-gradient(148deg, black 0px, black 19px, transparent 19px, transparent 22px), linear-gradient(90deg, #00fffa, #f0f0f0);
 }
 
+/* Background video used on the love page */
+/* background video removed */
+
 .flowers {
   position: relative;
   transform: scale(0.7);
@@ -1055,7 +1058,7 @@ mask-image: linear-gradient(to top, transparent 40%, #079097 80%) !important;
 }
 
 /* Picture frame styles */
-.frames { display:flex; gap:1.5vmin; justify-content:center; align-items:center; }
+.frames { display:flex; gap:1.5vmin; justify-content:center; align-items:center; position:relative; }
 .frame { transition: transform 180ms ease, box-shadow 180ms ease; position:relative; overflow:hidden; }
 .frame:hover { transform: translateY(-6px); box-shadow: 0 14px 30px rgba(0,0,0,0.5); }
 .frame.active { outline: 6px solid rgba(255,240,230,0.6); box-shadow: 0 18px 36px rgba(0,0,0,0.6); z-index: 30; }
@@ -1105,6 +1108,20 @@ mask-image: linear-gradient(to top, transparent 40%, #079097 80%) !important;
 
 /* uploader controls */
 .upload-btn { cursor:pointer; }
+
+/* overlay video positioned over frames (middle-bottom) */
+.overlay-video {
+  display: block;
+  margin: 1.2vmin auto 0; /* sit below the frames, centered */
+  width: clamp(220px, 34vmin, 520px);
+  max-width: 90%;
+  z-index: 120;
+  pointer-events: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+.overlay-video__el { display:block; width:100%; height:auto; object-fit:cover; }
 
 /* page transition styles */
 body { transition: opacity 420ms ease, transform 420ms ease; }

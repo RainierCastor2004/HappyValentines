@@ -330,6 +330,14 @@
           </div>
         </div>
 
+        <!-- Overlay video placed AFTER the images so it appears below them -->
+        <div class="overlay-video" aria-hidden="false">
+          <video id="loveVideo" class="overlay-video__el" autoplay muted loop playsinline preload="auto">
+            <source src="love-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
         <div class="uploader" style="margin-top:2vmin;display:flex;gap:1vmin;align-items:center;justify-content:center;">
           <label class="upload-btn" for="imageInput" style="background:#fff;color:#222;padding:0.6vmin 1.2vmin;border-radius:6px;cursor:pointer;">Choose image to attach</label>
           <input id="imageInput" type="file" accept="image/*" style="display:none" />
